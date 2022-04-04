@@ -1,0 +1,16 @@
+.Carousel {
+    display: flex;
+    overflow-x: scroll;
+  }
+  
+  .CarouselItem {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    min-height: 10vh;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  
