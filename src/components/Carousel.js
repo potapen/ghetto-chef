@@ -1,17 +1,23 @@
 import './Carousel.css'
+const likeRecipe = (event,recipes,setRecipes) => {
+  const id = event.target.parentNode.id
+  const recipesCopy = [...recipes]
+  const recipe = recipesCopy.find(recipe => recipe.id ===id)
+  recipe.liked = true
+  setRecipes(recipesCopy)
 
-const Carousel = () => {
-  const messages = [
-    'Pork ribs',
-    'Omelette',
-    'Fried Rice',
-    'confit de canard',
-  ]
 
+
+}
+
+const Carousel = ({recipes,setRecipes}) => {
   return (
     <section className='Carousel'>
-      {messages.map((message, index) => (
-        <div key={`carousel${index}`} className='CarouselItem'>{message}</div>
+      {recipes.map((recipe, index) => (
+        <div key={recipe.id} id={recipe.id} className='CarouselItem'>
+          {recipe.name}
+          <button onClick={(event)=>likeRecipe(event,recipes,setRecipes)}>❤️  </button>
+        </div>
       ))}
     </section>
   )

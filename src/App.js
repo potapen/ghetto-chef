@@ -1,46 +1,19 @@
 // src/App.js
-import './App.css';
-import Cadre from './components/Cadre';
-import Carousel from './components/Carousel';
-
+import './App.css'
+import TopSection from './components/TopSection'
+import CadresSection from './components/CadresSection'
+import Carousel from './components/Carousel'
+import { useState } from 'react'
+import recipesFromFiles from './recipes.json'
 
 function App() {
-  const inputsArray = [
-    {
-      title: 'recipes',
-      article: 'get step by step recipes on awesome dishes',
-      icon: 'fa-solid fa-bowl-rice'
-    },
-    {
-      title: 'stories',
-      article: 'get to know more on a random item',
-      icon: 'fa-solid fa-book'
-    },
-  ];
+  const [recipes, setRecipes] = useState(recipesFromFiles)
   return (
     <div className="App">
-      <section className="topSection">
-        <nav>
-        </nav>
-        <div className="mainMessage">
-          <h1>Welcome to Ghetto Chef</h1>
-          <article> Learn how to become a great Chef from zero</article>
-        </div>
-      </section>
-      <section className="bottomSection">
-        {inputsArray.map((input,index)=>{
-          return <Cadre
-          key={`cadre${index}`}
-          title= {input.title}
-          article={input.article}
-          icon={input.icon}
-          />
-        })}
-      </section>
-      <Carousel/>
-
-
+      <TopSection recipes={recipes} setRecipes={setRecipes}/>
+      <CadresSection/>
+      <Carousel recipes={recipes} setRecipes={setRecipes}/>
     </div>
   );
 }
-export default App;
+export default App
